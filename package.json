@@ -1,0 +1,50 @@
+{
+  "name": "chatauto",
+  "displayName": "CHATAUTO",
+  "description": "A local MCP bridge that lets AI agents inspect and control a VS Code workspace.",
+  "version": "0.1.0",
+  "publisher": "verification-step",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/Verification-step/CHATAUTO.git" },
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Other"],
+  "extensionKind": ["workspace"],
+  "main": "./out/src/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      { "command": "chatauto.startServer", "title": "CHATAUTO: Start MCP Server", "category": "CHATAUTO" },
+      { "command": "chatauto.stopServer", "title": "CHATAUTO: Stop MCP Server", "category": "CHATAUTO" },
+      { "command": "chatauto.status", "title": "CHATAUTO: Show Status", "category": "CHATAUTO" }
+    ],
+    "configuration": {
+      "title": "CHATAUTO",
+      "properties": {
+        "chatauto.port": { "type": "number", "default": 4317, "minimum": 1024, "maximum": 65535, "description": "Local MCP server port. The server always binds to 127.0.0.1 in this phase." },
+        "chatauto.confirmFileWrites": { "type": "boolean", "default": true, "description": "Require confirmation before an MCP tool writes a file." },
+        "chatauto.confirmTerminalCommands": { "type": "boolean", "default": true, "description": "Require confirmation before an MCP tool runs a terminal command." }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "vscode-test",
+    "package": "npm run compile && vsce package --no-dependencies",
+    "vscode:prepublish": "npm run compile"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.5",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.17.30",
+    "@types/vscode": "^1.90.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.6.0",
+    "typescript": "^5.8.2"
+  }
+}
