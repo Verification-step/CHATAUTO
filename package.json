@@ -9,12 +9,10 @@
     "type": "git",
     "url": "https://github.com/Verification-step/CHATAUTO.git"
   },
-  "engines": {
-    "vscode": "^1.90.0"
-  },
+  "engines": { "vscode": "^1.90.0" },
   "categories": ["Other"],
   "extensionKind": ["workspace"],
-  "main": "./out/extension.js",
+  "main": "./out/src/extension.js",
   "activationEvents": [],
   "contributes": {
     "commands": [
@@ -25,23 +23,9 @@
     "configuration": {
       "title": "CHATAUTO",
       "properties": {
-        "chatauto.port": {
-          "type": "number",
-          "default": 4317,
-          "minimum": 1024,
-          "maximum": 65535,
-          "description": "Local MCP server port. The server always binds to 127.0.0.1 in this phase."
-        },
-        "chatauto.confirmFileWrites": {
-          "type": "boolean",
-          "default": true,
-          "description": "Require confirmation before an MCP tool writes a file."
-        },
-        "chatauto.confirmTerminalCommands": {
-          "type": "boolean",
-          "default": true,
-          "description": "Require confirmation before an MCP tool runs a terminal command."
-        }
+        "chatauto.port": { "type": "number", "default": 4317, "minimum": 1024, "maximum": 65535, "description": "Local MCP server port. The server always binds to 127.0.0.1 in this phase." },
+        "chatauto.confirmFileWrites": { "type": "boolean", "default": true, "description": "Require confirmation before an MCP tool writes a file." },
+        "chatauto.confirmTerminalCommands": { "type": "boolean", "default": true, "description": "Require confirmation before an MCP tool runs a terminal command." }
       }
     }
   },
@@ -62,7 +46,7 @@
     "@types/vscode": "^1.90.0",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.5.2",
-    "typescript": "^5.8.2",
-    "vsce": "^3.6.0"
+    "@vscode/vsce": "^3.6.0",
+    "typescript": "^5.8.2"
   }
 }
